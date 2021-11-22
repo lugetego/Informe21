@@ -63,7 +63,7 @@ class EstudiantesController extends AbstractController
         $academico = $user->getAcademico();
 
         $em = $this->getDoctrine()->getManager();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio(2021, $academico);
 
         $estudiante = new Estudiantes();
         $form = $this->createForm('App\Form\EstudiantesType', $estudiante);
@@ -98,7 +98,7 @@ class EstudiantesController extends AbstractController
 
         $em = $this->getDoctrine()->getManager();
 
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio(2021, $academico);
 
         $enviado = $informe->isEnviado();
 
