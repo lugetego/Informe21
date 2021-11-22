@@ -51,9 +51,11 @@ class CursosController extends AbstractController
 
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
 
         $curso = new Cursos();
         $form = $this->createForm('App\Form\CursosType', $curso);
@@ -86,9 +88,11 @@ class CursosController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
         $enviado = $informe->isEnviado();
 
         $deleteForm = $this->createDeleteForm($curso);
@@ -117,7 +121,7 @@ class CursosController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+//        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
 
         $deleteForm = $this->createDeleteForm($curso);
 

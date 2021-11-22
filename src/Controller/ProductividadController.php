@@ -129,9 +129,10 @@ class ProductividadController extends AbstractController
 
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
-        $academico = $user->getAcademico();
+ //       $academico = $user->getAcademico();
 
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2021, $academico);
+
+//        $informe = $em->getRepository('App:Informe')->findOneByAnio(2021, $academico);
         $deleteForm = $this->createDeleteForm($productividad);
 //        $this->denyAccessUnlessGranted('edit', $productividad);
         $editForm = $this->createForm('App\Form\ProductividadType', $productividad, array('user'=>$user));
