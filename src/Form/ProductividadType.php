@@ -101,7 +101,7 @@ class ProductividadType extends AbstractType
                     'No'=>false),
                 'expanded'=>true,
                 'required'=>true,
-                'label'=>'Indizado',
+                'label'=>'*Indizado',
 //                'choices_as_values' => false,
             ))
             ->add('revista', 'Symfony\Component\Form\Extension\Core\Type\TextType',array(
