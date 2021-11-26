@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PosdocController extends AbstractController
 {
     /**
-     * @Route("/anual/{actual}", name="posdoc_index", methods={"GET"}, defaults={"actual"="2020"})
+     * @Route("/anual/{actual}", name="posdoc_index", methods={"GET"}, defaults={"actual"="2021"})
      */
     public function index($actual)
     {
@@ -29,6 +29,7 @@ class PosdocController extends AbstractController
 
         $user = $this->get('security.context')->getToken()->getUser();
         $informe = $em->getRepository('InformeBundle:Informe')->findOneByAnio($actual, $user->getAcademico());
+
         $posdocs = $informe->getPosdocs();
         $enviado = $informe->isEnviado();
 
@@ -50,10 +51,12 @@ class PosdocController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
 
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
 
         $posdoc = new Posdoc();
         $form = $this->createForm('App\Form\PosdocType', $posdoc);
@@ -83,10 +86,12 @@ class PosdocController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
 
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
 
         $enviado = $informe->isEnviado();
 
@@ -114,8 +119,10 @@ class PosdocController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
 
         $deleteForm = $this->createDeleteForm($posdoc);
         $editForm = $this->createForm('App\Form\PosdocType', $posdoc);
