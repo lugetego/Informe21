@@ -138,11 +138,7 @@ class DashController extends AbstractController
                 'visitas' => $visitas,
 
             ));
-
-
-
         }
-
     }
 
     /**
@@ -391,7 +387,7 @@ class DashController extends AbstractController
             ->setFrom('webmaster@matmor.unam.mx')
             ->setTo(array($user->getEmail() ))
             //->setTo('gerardo@matmor.unam.mx')
-            ->setBcc(array('webmaster@matmor.unam.mx','vorozco@matmor.unam.mx'))
+            //->setBcc(array('webmaster@matmor.unam.mx','vorozco@matmor.unam.mx'))
             ->setBody($this->renderView('dash/mail.txt.twig', array('entity' => $informe,'academico'=>$academico)));
 
         ;
