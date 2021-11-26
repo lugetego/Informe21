@@ -297,21 +297,24 @@ class DashController extends AbstractController
         $this->knpSnappy = $knpSnappy;
         $em = $this->getDoctrine()->getManager();
 
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
+
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
 
         if ($this->isGranted('ROLE_ADMIN')) {
 
-            $informe = $em->getRepository('App:Informe')->findOneByAnio(2021, $academico);
+            $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
             $eventos = $em->getRepository('App:Eventos')->findEventos($informe->getId());
             $visitas = $em->getRepository('App:Eventos')->findByVisitantes($informe->getId());
-            $plan = $em->getRepository('App:Plan')->findOneByAnio(2022, $academico);
+            $plan = $em->getRepository('App:Plan')->findOneByAnio($actual+1, $academico);
 
 
             if(in_array('ROLE_TECNICO', $academico->getUser()->getRoles())){
 
                 $tecnicos = $em->getRepository('App:Tecnico')->findOneByInforme($informe);
-                $informe = $em->getRepository('App:Informe')->findOneByAnio(2021, $academico);
+                $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
                 $informeAnual = $tecnicos->getInformeAnual();
                 $plan= $tecnicos->getPlan();
 
@@ -387,7 +390,7 @@ class DashController extends AbstractController
             ->setFrom('webmaster@matmor.unam.mx')
             ->setTo(array($user->getEmail() ))
             //->setTo('gerardo@matmor.unam.mx')
-            //->setBcc(array('webmaster@matmor.unam.mx','vorozco@matmor.unam.mx'))
+            ->setBcc(array('webmaster@matmor.unam.mx','vorozco@matmor.unam.mx'))
             ->setBody($this->renderView('dash/mail.txt.twig', array('entity' => $informe,'academico'=>$academico)));
 
         ;
