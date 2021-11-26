@@ -77,9 +77,12 @@ class TecnicoController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
+
         $enviado = $informe->isEnviado();
         $tecnicos = $em->getRepository('App:Tecnico')->findOneByInforme($informe);
 
@@ -110,7 +113,11 @@ class TecnicoController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
+
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
+
 
         $enviado = $informe->isEnviado();
 
