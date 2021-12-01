@@ -57,9 +57,11 @@ class OtrosController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
 
         $otro = new Otros();
         $form = $this->createForm('App\Form\OtrosType', $otro);
@@ -92,10 +94,12 @@ class OtrosController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
 
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
 
         $enviado = $informe->isEnviado();
 

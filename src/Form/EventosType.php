@@ -110,7 +110,7 @@ class EventosType extends AbstractType
                     'year' => 'Año',
                     'month' => 'Mes',
                     'day' => 'Día'),
-                'years'=> range(2020,2020),
+                'years'=> range(2021,2021),
                 'label'=>'Fecha de inicio',
                 'required'=>true,
 
