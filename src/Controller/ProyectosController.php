@@ -22,7 +22,7 @@ class ProyectosController extends AbstractController
      * Lists all Proyectos entities.
      *
      * @Route("/", name="proyectos_index", methods={"GET"})
-     * @Route("/anual/{actual}", name="proyectos_index", methods={"GET"}, defaults={"actual"="2020"})
+     * @Route("/anual/{actual}", name="proyectos_index", methods={"GET"}, defaults={"actual"="2021"})
 
 
      */

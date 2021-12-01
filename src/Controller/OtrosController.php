@@ -20,7 +20,7 @@ class OtrosController extends AbstractController
 {
     /**
      * Lists all Otros entities.
-     * @Route("/anual/{actual}", name="otros_index", methods={"GET"}, defaults={"actual"="2020"})
+     * @Route("/anual/{actual}", name="otros_index", methods={"GET"}, defaults={"actual"="2021"})
      */
     public function index($actual)
     {
