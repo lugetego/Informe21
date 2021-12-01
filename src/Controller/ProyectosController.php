@@ -58,9 +58,11 @@ class ProyectosController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
 
         $proyecto = new Proyectos();
         $form = $this->createForm('App\Form\ProyectosType', $proyecto);
@@ -93,9 +95,11 @@ class ProyectosController extends AbstractController
         $securityContext = $this->container->get('security.token_storage');
         $user = $securityContext->getToken()->getUser();
         $academico = $user->getAcademico();
+        $twigglobals = $this->get("twig")->getGlobals();
+        $actual = $twigglobals["actual"];
 
         $em = $this->getDoctrine()->getManager();
-        $informe = $em->getRepository('App:Informe')->findOneByAnio(2020, $academico);
+        $informe = $em->getRepository('App:Informe')->findOneByAnio($actual, $academico);
         $enviado = $informe->isEnviado();
 
         $deleteForm = $this->createDeleteForm($proyecto);
