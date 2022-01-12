@@ -47,11 +47,11 @@
 
             <div>
                 <strong>Posdocs</strong><br>
-                {% if informe.posdoc|length == 0 %}
+                {% if informe.posdocs|length == 0 %}
                     <p class="text-danger">No se registró información</p>
                 {% else %}
                     <ol>
-                        {% for posdoc in informe.posdoc %}
+                        {% for posdoc in informe.posdocs %}
                             <li>{{ posdoc.nombre |title }}, <small>del {{ posdoc.inicio|localizeddate('long', 'none') }} al {{ posdoc.fin|localizeddate('long', 'none') }}</small>
                                 <br>
                             </li>
