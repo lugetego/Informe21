@@ -47,11 +47,11 @@
 
             <div>
                 <strong>Posdocs</strong><br>
-                {% if informe.posdocs|length == 0 %}
+                {% if informe.posdoc|length == 0 %}
                     <p class="text-danger">No se registró información</p>
                 {% else %}
                     <ol>
-                        {% for posdoc in informe.posdocs %}
+                        {% for posdoc in informe.posdoc %}
                             <li>{{ posdoc.nombre |title }}, <small>del {{ posdoc.inicio|localizeddate('long', 'none') }} al {{ posdoc.fin|localizeddate('long', 'none') }}</small>
                                 <br>
                             </li>
@@ -117,9 +117,7 @@
             {% endif %}
         </div>
         <div>
-{#            {% set visitantes=0 %}#}
             <strong>Visitantes</strong><br>
-{#            {% if visitantes == 0 %}#}
             {% if visitas|length == 0 %}
                 <p class="text-danger">No se registró información</p>
             {% else %}
