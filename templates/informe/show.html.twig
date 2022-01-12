@@ -117,9 +117,10 @@
             {% endif %}
         </div>
         <div>
-            {% set visitantes=0 %}
+{#            {% set visitantes=0 %}#}
             <strong>Visitantes</strong><br>
-            {% if visitantes == 0 %}
+{#            {% if visitantes == 0 %}#}
+            {% if informe.visitas|length == 0 %}
                 <p class="text-danger">No se registró información</p>
             {% else %}
                 <ol>

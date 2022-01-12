@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Eventos;
 use App\Form\EventosType;
 use App\Repository\AcademicoRepository;
