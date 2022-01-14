@@ -25,6 +25,7 @@ class EventosType extends AbstractType
                 'choices'=>array(
                     'Comisión'=>'Comisión',
                     'Licencia'=>'Licencia',
+                    'Virtual'=>'Virtual',
                 ),
                 'placeholder'=>'Seleccionar',
                 'required'=>true,
