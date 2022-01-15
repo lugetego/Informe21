@@ -20,7 +20,7 @@ class PosdocType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('programas', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType',array(
+            ->add('programasp', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType',array(
                 'label'=>'*Programa',
                 'choices'=>array(
                     'DGAPA'=>'DGAPA',
@@ -87,20 +87,20 @@ class PosdocType extends AbstractType
                 // this would be your entity, i.e. SportMeetup
 
                 $data = $event->getData();
-                if (isset($data['programas'])){
+                if (isset($data['programasp'])){
 
-                    $val = $data['programas'];
+                    $val = $data['programasp'];
                     if ( $val !='Otro') {
                         $data['programa'] = $val;
                         $event->setData($data);
                     }
                 }
                 else {
-                    $data['programas']='';
+                    $data['programasp']='';
                 }
             }
         );
-        $builder->get('programas')->addEventListener(
+        $builder->get('programasp')->addEventListener(
             FormEvents::POST_SUBMIT,
             function (FormEvent $event) use ($formModifier) {
                 // It's important here to fetch $event->getForm()->getData(), as

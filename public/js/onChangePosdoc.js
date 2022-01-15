@@ -1,24 +1,24 @@
 
-var $sport = $("#posdoc_programas");
+var $sport5 = $("#posdoc_programasp");
 
 $(document).ready(function(){
 
-    $sport.change(function(){
+    $sport5.change(function(){
 
-        var $form = $(this).closest('form');
+        var $form5 = $(this).closest('form');
 
         // Simulate form data, but only include the selected sport value.
-        var data = {};
-        data[$sport.attr("name")] = $sport.val();
+        var data5 = {};
+        data5[$sport5.attr("name")] = $sport5.val();
         // Submit data via AJAX to the form's action path.
 
         $('#posdoc_programa').attr('readonly', true);
 
-        if ($sport.val()=='Otro') {
+        if ($sport5.val()==='Otro') {
             $.ajax({
-                url: $form.attr('action'),
-                type: $form.attr('method'),
-                data: data,
+                url: $form5.attr('action'),
+                type: $form5.attr('method'),
+                data: data5,
                 success: function (html) {
 
                     $("#posdoc_programa").replaceWith(
