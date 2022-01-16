@@ -19,3 +19,5 @@ framework:
     templating:
         engines: ['twig']
 
+    default_locale: es
+
