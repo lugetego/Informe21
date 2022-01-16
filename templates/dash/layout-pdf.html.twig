@@ -58,7 +58,7 @@
                                 {{ estudiante.nivel|title }},
                                 {{ estudiante.programa }},
                                 {% if estudiante.avance %}<small>{{ estudiante.avance }}% de avance,</small>{% endif %}
-                                {% if estudiante.titulado %} titulado el {{ estudiante.titulacion|localizeddate('long', 'none') }},{% endif %}
+                                {% if estudiante.titulado %} titulado el {{ estudiante.titulacion|format_date('full', '', null, 'gregorian', 'fr')}},{% endif %}
                                 {% if estudiante.tesis %}<small>tema de tesis:</small> <em>"{{ estudiante.tesis }}"</em>{% endif %}
                             </li>
                         </small>
