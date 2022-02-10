@@ -28,6 +28,7 @@ class InformeType extends AbstractType
                     'Aprobado'=>'Aprobado',
                     'Aprobado con observaciones'=>'Aprobado con observaciones',
                     'No aprobado'=>'No aprobado',
+                    'No aprobado con observaciones'=>'No aprobado con observaciones',
                 ),
                 'placeholder'=>'Seleccionar',
                 'required'=>false,
